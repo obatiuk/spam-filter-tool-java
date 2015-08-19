@@ -74,15 +74,15 @@ public class AnalyticsSpamFilterTool {
 			this.options = options;
 		}
 
-		public void print(Object action) {
+		public void print(Object object) {
 			if (this.options.verbose) {
-				System.out.print(action);
+				System.out.print(object);
 			}
 		}
 
-		public void println(Object result) {
+		public void println(Object object) {
 			if (this.options.verbose) {
-				System.out.println(result);
+				System.out.println(object);
 			}
 		}
 	}
