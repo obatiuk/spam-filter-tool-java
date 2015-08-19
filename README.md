@@ -20,15 +20,27 @@ mvn scm:checkout -DcheckoutDirectory=spam-filter-tool-java -DconnectionUrl=scm:g
 ```
 ## Running
 
+You can run tool using the single parameters file
+
 ```sh
 mvn compile exec:java -Dexec.arguments=@<path_to_parameters_file>
 ```
-or
+
+```sh
+mvn clean package assembly:single
+java -jar target/spam-filter-tool-*-jar-with-dependencies.jar @<path_to_parameters_file>
+```
+or you can specify arguments as usual:
+
+```sh
+mvn compile exec:java -Dexec.arguments=--help
+```
 
 ```sh
 mvn clean package assembly:single
 java -jar target/spam-filter-tool-*-jar-with-dependencies.jar --help
 ```
+
 ### Parameters file examples 
 
 - **Check overall status (no changes):**
