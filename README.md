@@ -21,7 +21,7 @@ mvn scm:checkout -DcheckoutDirectory=spam-filter-tool-java -DconnectionUrl=scm:g
 ## Running
 
 ```sh
-mvn exec:java -Dexec.arguments=@<path_to_parameters_file>
+mvn compile exec:java -Dexec.arguments=@<path_to_parameters_file>
 ```
 or
 
