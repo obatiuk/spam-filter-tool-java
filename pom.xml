@@ -5,11 +5,48 @@
 	<artifactId>spam-filter-tool</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<url>https://github.com/obatiuk/spam-filter-tool-java</url>
+	<description>Spam Filter Insertion Tool for Google Analytics (java version)</description>
+
+	<issueManagement>
+		<url>https://github.com/obatiuk/spam-filter-tool-java/issues</url>
+		<system>Issues</system>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>manual</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/obatiuk/spam-filter-tool-java</url>
+		<connection>scm:git:git://github.com/obatiuk/spam-filter-tool-java.git</connection>
+		<developerConnection>scm:git:git@github.com:obatiuk/spam-filter-tool-java.git</developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<email>oleksii.batiuk@gmail.com</email>
+			<name>Oleksii Batiuk</name>
+			<url>https://github.com/obatiuk</url>
+			<id>obatiuk</id>
+		</developer>
+	</developers>
+
+	<organization>
+		<name>javatalks.ru</name>
+		<url>http://javatalks.ru</url>
+	</organization>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.analytics.version>v3-rev116-1.20.0</project.analytics.version>
 		<project.oauth.version>1.20.0</project.oauth.version>
 		<tool.main.class>ru.javatalks.tools.spam.AnalyticsSpamFilterTool</tool.main.class>
+		<java.version>1.6</java.version>
 	</properties>
 
 	<dependencies>
@@ -32,6 +69,15 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -61,12 +107,47 @@
 				<configuration>
 					<archive>
 						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 							<mainClass>${tool.main.class}</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.9.4</version>
+				<configuration>
+					<goals>package</goals>
 				</configuration>
 			</plugin>
 		</plugins>
