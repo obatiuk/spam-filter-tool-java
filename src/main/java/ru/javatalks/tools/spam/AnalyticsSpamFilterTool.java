@@ -9,9 +9,6 @@
 package ru.javatalks.tools.spam;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -47,18 +44,20 @@ import com.google.api.services.analytics.model.Profiles;
 import com.google.api.services.analytics.model.Webproperties;
 import com.google.api.services.analytics.model.Webproperty;
 import com.google.common.collect.Sets;
+import com.google.common.io.Files;
 
 public class AnalyticsSpamFilterTool {
 
 	public static class FileValidator implements IParameterValidator {
 
+		@Override
 		public void validate(String name, String value)
 				throws ParameterException {
-			final Path path = Paths.get(value);
-			if (!Files.exists(path)) {
+			final File file = new File(value);
+			if (!file.exists()) {
 				throw new ParameterException("File [" + value
 						+ "] does not exists");
-			} else if (!Files.isReadable(path)) {
+			} else if (!file.canRead()) {
 				throw new ParameterException("File [" + value
 						+ "] can not be read");
 			}
@@ -512,8 +511,8 @@ public class AnalyticsSpamFilterTool {
 			throws Exception {
 		final Map<String, String> filtersData = new TreeMap<String, String>();
 
-		final String filters = new String(Files.readAllBytes(Paths
-				.get(options.filters)));
+		final String filters = new String(Files.toByteArray(new File(
+				options.filters)));
 
 		if (filters.isEmpty()) {
 			throw new IllegalArgumentException("Filters file ["
