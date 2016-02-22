@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/obatiuk/spam-filter-tool-java.svg?branch=master)](https://travis-ci.org/obatiuk/spam-filter-tool-java)
+
 # spam-filter-tool-java
 
 This is a **Java version** of the original [Spam Filter Insertion Tool](https://github.com/sahava/spam-filter-tool) created by [Simo Ahava](http://www.simoahava.com/).
