@@ -6,7 +6,7 @@
  * 
  * Created by: Oleksii Batiuk (oleksii.batiuk@gmail.com)
  */
-package ru.javatalks.tools.spam;
+package com.github.obatiuk.tools.spam;
 
 import java.io.File;
 import java.util.Arrays;
@@ -129,7 +129,7 @@ public class AnalyticsSpamFilterTool {
 	private static final String FILTER_FIELD = "CAMPAIGN_SOURCE";
 	private static final String FILTER_MATCH_TYPE = "MATCHES";
 	private static final String ALL_PROFILES = "*";
-	private static final String DEFAULT_APPLICATION = "javatalks.ru-JavaSpamFilerTool/1.0";
+	private static final String DEFAULT_APPLICATION = "obatiuk-JavaSpamFilerTool/1.0";
 
 	public static void main(String[] args) {
 
